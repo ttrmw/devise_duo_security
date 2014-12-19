@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Devise::DuoSecurity::VERSION
   s.authors     = ["Greg Molnar"]
   s.email       = ["greg.molnar@mwrinfosecurity.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Devise::DuoSecurity."
-  s.description = "TODO: Description of Devise::DuoSecurity."
+  s.homepage    = "https://rubygems.org"
+  s.summary     = "A gem to support duosecurity 2 factor auth."
+  s.description = "A gem to support duosecurity 2 factor auth."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
