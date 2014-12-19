@@ -1,0 +1,10 @@
+<%= javascript_include_tag "devise_duo_security/duo_web" %>
+<script type="text/javascript">
+  Duo.init({
+    'host': '<%= @host %>',
+    'sig_request': '<%= @signature %>',
+    'post_action': '<%= @verify_path %>'
+  });
+</script>
+
+<iframe id="duo_iframe" width="620" height="330" frameborder="0"></iframe>
