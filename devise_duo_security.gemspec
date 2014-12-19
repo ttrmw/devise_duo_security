@@ -5,7 +5,7 @@ require "devise/duo_security/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "devise_duo_security"
+  s.name        = "devise_duo_sec"
   s.version     = Devise::DuoSecurity::VERSION
   s.authors     = ["Greg Molnar"]
   s.email       = ["greg.molnar@mwrinfosecurity.com"]
