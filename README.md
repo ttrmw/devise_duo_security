@@ -17,9 +17,9 @@ Add duo_auth to your devise model:
 Create an initializer and set your DuoSecurity config:
 ```ruby
 Devise::DuoSecurity.configure do |config|
-  config.app_secret = "your app secret"
-  config.ikey = "duosec ikey"
-  config.skey = "duosec secretkey"
-  config.host = "duosec api host"
+  config.app_secret = ENV["DUO_APP_SECRET"]
+  config.ikey = ENV["DUO_IKEY"]
+  config.skey = ENV["DUO_SKEY"]
+  config.host = ENV["DUO_API_HOST"]
 end
 ```
