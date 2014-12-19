@@ -24,7 +24,7 @@ end
 # TODO: Isn't there a better way?
 DuoSecurity = Devise::DuoSecurity
 
-Devise.add_module :duo_security, :model => 'duo_security', :controller => :duo_security, :route => :duo_security
+Devise.add_module :duo_security, :model => 'devise_duo_sec', :controller => :duo_security, :route => :duo_security
 
 module ActionDispatch::Routing
   class Mapper
