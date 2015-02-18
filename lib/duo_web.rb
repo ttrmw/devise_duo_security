@@ -2,7 +2,6 @@ require 'openssl'
 require 'base64'
 
 module Duo
-
   DUO_PREFIX  = 'TX'
   APP_PREFIX  = 'APP'
   AUTH_PREFIX = 'AUTH'
@@ -51,7 +50,7 @@ module Duo
 
   private
   def hmac_sha1(key, data)
-    OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha1'), key, data.to_s)
+    OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), key, data.to_s)
   end
 
   def sign_vals(key, vals, prefix, expire)
