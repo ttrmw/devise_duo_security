@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    devise_duo_sec (0.0.4)
+    devise_duo_sec (0.0.6)
       devise (~> 3.x)
       rails (~> 4.x)
 

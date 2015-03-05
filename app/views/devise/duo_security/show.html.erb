@@ -1,5 +1,5 @@
 <%= javascript_include_tag "devise_duo_security/duo_web" %>
-<script type="text/javascript">
+<script type="text/javascript" nonce="<%= @content_security_policy_nonce %>">
   Duo.init({
     'host': '<%= @host %>',
     'sig_request': '<%= @signature %>',
