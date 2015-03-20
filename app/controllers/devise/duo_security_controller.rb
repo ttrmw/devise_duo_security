@@ -1,7 +1,11 @@
 require 'duo_web'
+
 class Devise::DuoSecurityController < DeviseController
-  before_action :set_resource
+  prepend_before_action :set_resource
+  prepend_before_action :authenticate_scope!, only: [:show]
   skip_before_action :verify_authenticity_token
+
+  include Devise::Controllers::Helpers
   include Duo
 
   def show
@@ -21,8 +25,15 @@ class Devise::DuoSecurityController < DeviseController
 
   private
 
+  def authenticate_scope!
+    # because we are a type of DeviseController authentication will not run again
+    # hence we need to set force => true to ensure a user is logged in!
+    send(:"authenticate_#{resource_name}!", :force => true)
+    self.resource = send("current_#{resource_name}")
+    @resource = resource
+  end
+
   def set_resource
-    @resource = send("current_#{resource_name}")
     @verify_path = send("verify_#{resource_name}_duo_security_path")
   end
 end
