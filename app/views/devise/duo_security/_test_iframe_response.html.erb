@@ -1,0 +1,144 @@
+    <html lang="en"><!--<![endif]--><head>
+<meta charset="utf-8">
+<title>Two-Factor Authentication</title>
+<!--[if lt IE 9]>
+<script src="&#x2f;frame&#x2f;static&#x2f;js&#x2f;lib&#x2f;html5shiv.js&#x3f;v&#x3d;5a98a"></script>
+<![endif]-->
+<link rel="stylesheet" href="/frame/static/css/normalize.css?v=51888">
+<link rel="stylesheet" href="/frame/static/fonts/opensans/opensans.css?v=f2b1a">
+<link rel="stylesheet" href="/frame/static/fonts/ss-standard/ss-standard.css?v=56373">
+<link rel="stylesheet" href="/frame/static/css/enroll_new/base.css?v=ca42a">
+
+<link rel="stylesheet" href="/frame/static/css/enroll_new/prompt.css?v=14a67">
+<link rel="stylesheet" href="/frame/static/css/tipsy.css?v=d2369">
+
+</head>
+<body>
+<div class="base-wrapper">
+<div class="base-header">
+<h1><span class="duo">Duo</span> Two-Factor Authentication</h1>
+
+<a class="help-link" href="http://guide.duosecurity.com/prompt" target="_blank" title="Need help?" tabindex="-1">
+<i class="ss-help"></i>
+</a>
+
+</div>
+<div class="base-main">
+
+<div class="base-body">
+
+
+
+
+
+<div class="status hidden">
+
+</div>
+<form action="/frame/prompt/new" method="post" id="login-form">
+<input type="hidden" name="sid" value="NTljZjRjMDUyOTc4NDRmZjgxNjU2NzkzOGJiOWIzZGU=|95.131.110.106|1426862601|ac35e2db262e05c369d15dd8a1b422cc2ac6609d">
+<label class="device-selector">
+<b>Device:</b>
+<select name="device">
+
+
+
+
+<option value="phone1">
+Android (+XX XXXX XX5265)
+</option>
+
+
+
+
+
+
+
+
+
+
+
+
+</select>
+</label>
+
+
+
+
+
+
+
+
+<fieldset data-device-index="phone1" class="" style="display: block;">
+
+
+<label>
+<input type="radio" name="factor" value="phone" checked="">
+<b>Phone call</b>
+<span class="helptext ss-help" title="We'll call your phone. Answer the call and press
+
+any key
+
+on your phone's keypad to authenticate."></span>
+</label>
+
+
+<div class="label passcode-label">
+<input type="radio" name="factor" value="passcode">
+<b>Passcode</b>
+<input type="text" name="passcode">
+
+<span class="helptext ss-help" title="Enter a passcode
+
+
+sent via SMS or
+
+
+provided by an administrator."></span>
+</div>
+
+<div class="sms-passcodes">
+
+
+
+
+<p class="sms-provisioned">
+Next SMS passcode starts with
+<b class="next-passcode">2</b>
+(<a href="#" class="need-codes sms-send-more" data-device-index="phone1">send more</a>)
+</p>
+<p class="sms-unprovisioned hidden">
+<a href="#" class="need-codes" data-device-index="phone1">Send SMS passcodes</a>
+</p>
+</div>
+
+</fieldset>
+
+
+
+</form>
+
+
+</div>
+</div>
+<div class="base-footer">
+
+
+<button data-form="login-form" id="login-button" class="button button-green ss-navigateright right" type="submit">Log in</button>
+
+</div>
+
+</div>
+<script src="/frame/static/shared/lib/jquery/jquery-legacy.min.js?v=65126"></script>
+<script src="/frame/static/js/lib/jquery-postmessage.min.js?v=15c30"></script>
+<!--[if lt IE 10]>
+<script src="&#x2f;frame&#x2f;static&#x2f;js&#x2f;page&#x2f;enroll_new&#x2f;quirks.js&#x3f;v&#x3d;cb16b"></script>
+<!--<![endif]-->
+<script src="/frame/static/js/page/enroll_new/frame.js?v=bd543"></script>
+
+
+<script src="/frame/static/js/lib/jquery.tipsy.js?v=cb2d5"></script>
+<script src="/frame/static/js/page/enroll_new/prompt.js?v=3365b"></script>
+
+
+
+</body></html>

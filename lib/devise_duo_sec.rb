@@ -1,6 +1,8 @@
+require 'devise'
 require 'devise/duo_security/controllers/helpers'
 require 'devise/duo_security/engine'
 require 'duo_web'
+
 module Devise
   module DuoSecurity
     class Configuration

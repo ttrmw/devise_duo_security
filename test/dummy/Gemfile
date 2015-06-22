@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem "rails", "~> 4.x"
+gem 'jquery-rails', '~> 4.0.0'
+gem "sqlite3"
+gem "rake"
+gem 'dotenv-rails'
+
+gem "devise", "~> 3.x"
+gem "devise_duo_sec", :path => "../.."
