@@ -1,4 +1,4 @@
-$a.push File.expand_path("../lib", __FILE__)
+$:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
 require "devise/duo_security/version"
