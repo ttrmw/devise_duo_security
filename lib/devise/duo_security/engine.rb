@@ -7,7 +7,8 @@ module Devise::DuoSecurity
     end
 
     initializer "devise_duo_security.assets.precompile" do |app|
-      app.config.assets.precompile += %w(devise_duo_security/duo_web.js)
+      app.config.assets.precompile += %w(devise_duo_security/Duo-Web-v2.js)
+      app.config.assets.precompile += %w(devise_duo_security/Duo-Frame.css)
     end
   end
 end
