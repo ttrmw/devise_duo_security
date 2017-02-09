@@ -1,4 +1,4 @@
-$:.push File.expand_path("../lib", __FILE__)
+$a.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
 require "devise/duo_security/version"
@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.x"
-  s.add_dependency "devise", "~> 3.x"
+  s.add_dependency "rails", "~> 5.x"
+  s.add_dependency "devise", "~> 4.x"
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'capybara', '~> 2.4.4'
   s.add_development_dependency 'capybara_minitest_spec'
