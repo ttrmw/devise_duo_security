@@ -1,5 +1,4 @@
 require 'duo_web'
-require 'pry'
 
 class Devise::DuoSecurityController < DeviseController
   prepend_before_action :set_resource
@@ -10,7 +9,6 @@ class Devise::DuoSecurityController < DeviseController
   include Duo
 
   def show
-    # binding.pry
     @host = DuoSecurity.configuration.host
     @signature = Duo.sign_request(DuoSecurity.configuration.ikey, DuoSecurity.configuration.skey, DuoSecurity.configuration.app_secret, @resource.email)
   end
