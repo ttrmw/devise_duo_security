@@ -17,7 +17,7 @@ class Devise::DuoSecurityController < DeviseController
     authenticated_username = Duo.verify_response(DuoSecurity.configuration.ikey, DuoSecurity.configuration.skey, DuoSecurity.configuration.app_secret, params[:sig_response])
     if authenticated_username
       warden.session(resource_name)['duo_authenticated'] = true
-      redirect_to root_path
+      redirect_to session["user_return_to"] || root_path
     else
       redirect_to send("#{resource_name}_duo_security_path")
     end
