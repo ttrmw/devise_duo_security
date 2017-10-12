@@ -17,17 +17,18 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.x"
-  s.add_dependency "devise", "~> 3.x"
+  s.add_dependency "rails", '~> 5.0.2'
+  s.add_dependency "devise", "~> 4.x"
   s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'capybara', '~> 2.4.4'
+  s.add_development_dependency 'capybara', '~> 2.7', '>= 2.7.1'
   s.add_development_dependency 'capybara_minitest_spec'
 
   s.add_development_dependency 'sinatra'
   s.add_development_dependency 'vcr'
-  s.add_development_dependency 'webmock', '~> 1.20.4'
+  s.add_development_dependency 'webmock', '~> 2.1'
+  s.add_development_dependency 'pry'
 
-  s.add_development_dependency  'launchy', '~> 2.4.3'
+  s.add_development_dependency 'launchy', '~> 2.4.3'
   s.add_development_dependency "sqlite3"
-  s.add_development_dependency 'jquery-rails', '~> 4.0.0'
+  s.add_development_dependency 'jquery-rails', '~> 4.3', '>= 4.3.1'
 end

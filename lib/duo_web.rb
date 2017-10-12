@@ -1,11 +1,13 @@
 require 'openssl'
 require 'base64'
 
+##
+# A Ruby implementation of the Duo WebSDK
+#
 module Duo
-
-  DUO_PREFIX  = 'TX'
-  APP_PREFIX  = 'APP'
-  AUTH_PREFIX = 'AUTH'
+  DUO_PREFIX  = 'TX'.freeze
+  APP_PREFIX  = 'APP'.freeze
+  AUTH_PREFIX = 'AUTH'.freeze
 
   DUO_EXPIRE = 300
   APP_EXPIRE = 3600
@@ -14,18 +16,22 @@ module Duo
   SKEY_LEN = 40
   AKEY_LEN = 40
 
-  ERR_USER = 'ERR|The username passed to sign_request() is invalid.'
-  ERR_IKEY = 'ERR|The Duo integration key passed to sign_request() is invalid.'
-  ERR_SKEY = 'ERR|The Duo secret key passed to sign_request() is invalid.'
-  ERR_AKEY = "ERR|The application secret key passed to sign_request() must be at least #{Duo::AKEY_LEN} characters."
+  ERR_USER = 'ERR|The username passed to sign_request() is invalid.'.freeze
+  ERR_IKEY = 'ERR|The Duo integration key passed to sign_request() is invalid.'.freeze
+  ERR_SKEY = 'ERR|The Duo secret key passed to sign_request() is invalid.'.freeze
+  ERR_AKEY = "ERR|The application secret key passed to sign_request() must be at least #{Duo::AKEY_LEN} characters.".freeze
 
-  # Sign a Duo request with the ikey, skey, akey, and username
+  # Sign a Duo 2FA request
+  # @param ikey [String] The Duo IKEY
+  # @param skey [String] The Duo SKEY
+  # @param akey [String] The Duo AKEY
+  # @param username [String] Username to authenticate as
   def sign_request(ikey, skey, akey, username)
-    return Duo::ERR_USER if not username or username.to_s.length == 0
+    return Duo::ERR_USER if !username || username.empty?
     return Duo::ERR_USER if username.include? '|'
-    return Duo::ERR_IKEY if not ikey or ikey.to_s.length != Duo::IKEY_LEN
-    return Duo::ERR_SKEY if not skey or skey.to_s.length != Duo::SKEY_LEN
-    return Duo::ERR_AKEY if not akey or akey.to_s.length < Duo::AKEY_LEN
+    return Duo::ERR_IKEY if !ikey || ikey.to_s.length != Duo::IKEY_LEN
+    return Duo::ERR_SKEY if !skey || skey.to_s.length != Duo::SKEY_LEN
+    return Duo::ERR_AKEY if !akey || akey.to_s.length < Duo::AKEY_LEN
 
     vals = [username, ikey]
 
@@ -35,7 +41,11 @@ module Duo
     return [duo_sig, app_sig].join(':')
   end
 
-  # Verify a response from Duo with the skey and akey.
+  # Verify a Duo 2FA request
+  # @param ikey [String] The Duo IKEY
+  # @param skey [String] The Duo SKEY
+  # @param akey [String] The Duo AKEY
+  # @param sig_response [String] Response from Duo service
   def verify_response(ikey, skey, akey, sig_response)
     begin
       auth_sig, app_sig = sig_response.to_s.split(':')
@@ -62,7 +72,7 @@ module Duo
     val_list = vals + [exp]
     val = val_list.join('|')
 
-    b64 = Base64.encode64(val).gsub(/\n/,'')
+    b64 = Base64.encode64(val).delete("\n")
     cookie = prefix + '|' + b64
 
     sig = hmac_sha1(key, cookie)
@@ -73,7 +83,7 @@ module Duo
     ts = Time.now.to_i
 
     parts = val.to_s.split('|')
-    return nil if parts.length !=3
+    return nil if parts.length != 3
     u_prefix, u_b64, u_sig = parts
 
     sig = hmac_sha1(key, [u_prefix, u_b64].join('|'))
